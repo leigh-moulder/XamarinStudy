@@ -10,18 +10,9 @@ namespace XamarinStudy
 {
     public partial class MainPage : ContentPage
     {
-
-        int clickCount = 0;
-
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        void Handle_Clicked(object sender, System.EventArgs eventArgs)
-        {
-            clickCount++;
-            ((Button)sender).Text = $"You clicked {clickCount} times.";
         }
     }
 }
