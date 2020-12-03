@@ -11,35 +11,81 @@
         <ListView
             x:Name="FavoriteContactsListView" 
             SeparatorVisibility="Default"
-            SelectionMode="None"
-            ItemsSource="{Binding FavoriteContacts}">
+            ItemsSource="{Binding FavoriteContacts}"
+            ItemSelected="OnFavoriteContactsListViewSelected"
+            ItemTapped="OnFavoriteContactsListViewTapped">
             
             <ListView.Header>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Favorites"/>
+                    <Label Text="Favorites" FontSize="Medium"/>
                 </StackLayout>
             </ListView.Header>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="2, 2, 2, 2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" 
+                                   Grid.Column="0"
+                                   Source="{Binding ImageUrl}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="35"
+                                   WidthRequest="35"/>
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding FirstName}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
-
         <ListView
-            x:Name="ContactsListView" 
+            x:Name="ContactsListView"
+            ItemsSource="{Binding Contacts}" 
             SeparatorVisibility="Default"
-            SelectionMode="None"
-            ItemsSource="{Binding Contacts}">
+            ItemSelected="OnContactsListViewSelected"
+            ItemTapped="OnContactsListViewTapped">
 
             <ListView.Header>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Contacts"/>
+                    <Label Text="Contacts" FontSize="Medium"/>
                 </StackLayout>
             </ListView.Header>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding FirstName}"/>
+                    <ViewCell>
+                        <Grid Padding="2, 2, 2, 2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" 
+                                   Grid.Column="0"
+                                   Source="{Binding ImageUrl}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="35"
+                                   WidthRequest="35"/>
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding FirstName}"/>
+                        </Grid>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </StackLayout>
 </ContentPage>

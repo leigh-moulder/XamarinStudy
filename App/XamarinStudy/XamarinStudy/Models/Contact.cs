@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XamarinStudy.DataSource
+namespace XamarinStudy.Models
 {
     public class Contact
     {
@@ -16,6 +16,11 @@ namespace XamarinStudy.DataSource
         public string GetDisplayName()
         {
             return FirstName + " " + LastName;
+        }
+
+        public override string ToString()
+        {
+            return GetDisplayName();
         }
     }
 }
