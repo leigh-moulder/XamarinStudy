@@ -9,35 +9,36 @@
         </Frame>
         
         <ListView
-            x:Name="SeparatorDemoListView" SeparatorVisibility="Default">
+            x:Name="FavoriteContactsListView" 
+            SeparatorVisibility="Default"
+            SelectionMode="None"
+            ItemsSource="{Binding FavoriteContacts}">
             
             <ListView.Header>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Favorites"/>
                 </StackLayout>
             </ListView.Header>
-            
-            <ListView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Favorite Contact Name</x:String>
-                    <x:String>Favorite Other Contact Name</x:String>
-                </x:Array>
-            </ListView.ItemsSource>
         </ListView>
 
-        
-        <ListView>
+
+        <ListView
+            x:Name="ContactsListView" 
+            SeparatorVisibility="Default"
+            SelectionMode="None"
+            ItemsSource="{Binding Contacts}">
+
             <ListView.Header>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Contacts"/>
                 </StackLayout>
             </ListView.Header>
-            <ListView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Contact Name</x:String>
-                    <x:String>Other Contact Name</x:String>
-                </x:Array>
-            </ListView.ItemsSource>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding FirstName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
     </StackLayout>
