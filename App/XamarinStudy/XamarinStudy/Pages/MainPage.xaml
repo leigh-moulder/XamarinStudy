@@ -1,26 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinStudy.MainPage">
-
+             x:Class="XamarinStudy.Pages.MainPage">
     <StackLayout Margin="5,5,5,5">
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Contacts" HorizontalTextAlignment="Start" TextColor="White" FontSize="Title"/>
         </Frame>
-        
+
         <ListView
             x:Name="FavoriteContactsListView" 
             SeparatorVisibility="Default"
             ItemsSource="{Binding FavoriteContacts}"
             ItemSelected="OnFavoriteContactsListViewSelected"
             ItemTapped="OnFavoriteContactsListViewTapped">
-            
+
             <ListView.Header>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Favorites" FontSize="Medium"/>
                 </StackLayout>
             </ListView.Header>
-            
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

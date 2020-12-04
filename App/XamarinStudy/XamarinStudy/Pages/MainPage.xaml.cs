@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Xamarin.Forms;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using XamarinStudy.DataSource;
 using XamarinStudy.Models;
 
-namespace XamarinStudy
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace XamarinStudy.Pages
 {
+   //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         private LocalContacts LocalContacts;

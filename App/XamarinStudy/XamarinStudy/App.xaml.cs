@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinStudy.Pages;
 
 namespace XamarinStudy
 {
@@ -10,7 +11,7 @@ namespace XamarinStudy
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Pages.MainPage();
         }
 
         protected override void OnStart()
