@@ -1,20 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using XamarinStudy.DataSource;
+using XamarinStudy.Models;
 
 namespace XamarinStudy.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditContactPage : ContentPage
     {
-        public EditContactPage()
+
+        private ContactsSource Source;
+
+        public EditContactPage(ref ContactsSource source)
         {
             InitializeComponent();
+
+            this.Source = source;
         }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+
+        async void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            var contact = (Contact)BindingContext;
+
+            contact = Source.AddContact(contact);
+
+            await Navigation.PopAsync();
+        }
+
+
+        async void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+
+            var contact = (Contact)BindingContext;
+
+            Source.RemoveContact(contact);
+
+            await Navigation.PopAsync();
+        }
+
     }
 }

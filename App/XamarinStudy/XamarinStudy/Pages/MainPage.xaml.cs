@@ -1,57 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Xamarin.Forms;
 using XamarinStudy.DataSource;
 using XamarinStudy.Models;
 
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 namespace XamarinStudy.Pages
 {
-   //[XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        private LocalContacts LocalContacts;
-        public IList<Contact> Contacts { get; private set; }
+        private ContactsSource ContactSource;
+        public IList<Contact> AllContacts { get; private set; }
         public IList<Contact> FavoriteContacts { get; private set; }
 
         public MainPage()
         {
             InitializeComponent();
-
-            LocalContacts = new LocalContacts();
-
-            Contacts = LocalContacts.GetContacts();
-            FavoriteContacts = LocalContacts.GetFavorites();
-
-            BindingContext = this;
+            ContactSource = new LocalContacts();
         }
 
 
-        void OnFavoriteContactsListViewSelected(Object sender, SelectedItemChangedEventArgs e)
+        protected override void OnAppearing()
         {
-            Contact selectedItem = e.SelectedItem as Contact;
+            base.OnAppearing();
+
+            AllContacts = ContactSource.GetContacts().OrderBy(p => p.GetDisplayName()).ToList();
+            FavoriteContacts = AllContacts.Where(p => p.IsFavorite).OrderBy(p => p.GetDisplayName()).ToList();
+
+            FavoriteContactsListView.ItemsSource = FavoriteContacts;
+            ContactsListView.ItemsSource = AllContacts;
         }
 
 
-        void OnFavoriteContactsListViewTapped(Object sender, ItemTappedEventArgs e)
+        async void OnContactAddClicked(Object sender, EventArgs e)
         {
-            Contact tappedItem = e.Item as Contact;
+            await Navigation.PushAsync(new EditContactPage(ref ContactSource)
+            {
+                BindingContext = new Contact()
+            });
         }
 
 
-        void OnContactsListViewSelected(Object sender, SelectedItemChangedEventArgs e)
+        async void OnContactSelected(Object sender, SelectedItemChangedEventArgs e)
         {
-            Contact selectedItem = e.SelectedItem as Contact;
-        }
-
-
-        void OnContactsListViewTapped(Object sender, ItemTappedEventArgs e)
-        {
-            Contact tappedItem = e.Item as Contact;
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new EditContactPage(ref ContactSource)
+                {
+                    BindingContext = e.SelectedItem as Contact
+                });
+            }
         }
     }
 }

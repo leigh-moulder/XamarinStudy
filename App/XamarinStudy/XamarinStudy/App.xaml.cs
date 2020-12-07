@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using XamarinStudy.Pages;
+﻿using Xamarin.Forms;
 
 namespace XamarinStudy
 {
@@ -11,7 +8,7 @@ namespace XamarinStudy
         {
             InitializeComponent();
 
-            MainPage = new Pages.MainPage();
+            MainPage = new NavigationPage(new Pages.MainPage());
         }
 
         protected override void OnStart()

@@ -1,12 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinStudy.Pages.EditContactPage">
+             x:Class="XamarinStudy.Pages.EditContactPage"
+             Title="Edit Contact">
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            x:Name="EditContactLayout">
+            <Label Text="{Binding FirstName}" FontSize="Title"/>
+
+            <Grid Padding="2, 2, 2, 2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="First Name:" VerticalOptions="CenterAndExpand"/>
+                <Editor Grid.Row="0" Grid.Column="1" Placeholder="First Name" Text="{Binding FirstName}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Last Name:" VerticalOptions="CenterAndExpand"/>
+                <Editor Grid.Row="1" Grid.Column="1" Placeholder="Last Name" Text="{Binding LastName}"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Phone Number:" VerticalOptions="CenterAndExpand"/>
+                <Editor Grid.Row="2" Grid.Column="1" Placeholder="Phone Number" Text="{Binding PhoneNumber}"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Favorite?" VerticalOptions="CenterAndExpand"/>
+                <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding IsFavorite}"/>
+            </Grid>
+
+            <Grid Padding="2, 2, 2, 2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="Save" Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
