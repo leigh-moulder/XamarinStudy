@@ -11,13 +11,10 @@ namespace XamarinStudy.Pages
     public partial class EditContactPage : ContentPage
     {
 
-        private ContactsSource Source;
 
-        public EditContactPage(ref ContactsSource source)
+        public EditContactPage()
         {
             InitializeComponent();
-
-            this.Source = source;
         }
 
 
@@ -31,8 +28,7 @@ namespace XamarinStudy.Pages
         {
             var contact = (Contact)BindingContext;
 
-            contact = Source.AddContact(contact);
-
+            await App.Database.SaveContactAsync(contact);
             await Navigation.PopAsync();
         }
 
@@ -42,8 +38,7 @@ namespace XamarinStudy.Pages
 
             var contact = (Contact)BindingContext;
 
-            Source.RemoveContact(contact);
-
+            await App.Database.DeleteContactAsync(contact);
             await Navigation.PopAsync();
         }
 

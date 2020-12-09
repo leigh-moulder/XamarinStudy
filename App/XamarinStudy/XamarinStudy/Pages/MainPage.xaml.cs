@@ -11,32 +11,28 @@ namespace XamarinStudy.Pages
     //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        private ContactsSource ContactSource;
-        public IList<Contact> AllContacts { get; private set; }
-        public IList<Contact> FavoriteContacts { get; private set; }
 
+        
         public MainPage()
         {
             InitializeComponent();
-            ContactSource = new LocalContacts();
         }
 
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
-            AllContacts = ContactSource.GetContacts().OrderBy(p => p.GetDisplayName()).ToList();
-            FavoriteContacts = AllContacts.Where(p => p.IsFavorite).OrderBy(p => p.GetDisplayName()).ToList();
+            var AllContacts = await App.Database.GetContactsAsync();
 
-            FavoriteContactsListView.ItemsSource = FavoriteContacts;
-            ContactsListView.ItemsSource = AllContacts;
+            FavoriteContactsListView.ItemsSource = AllContacts.Where(p => p.IsFavorite).OrderBy(p => p.GetDisplayName()).ToList();
+            ContactsListView.ItemsSource = AllContacts.OrderBy(p => p.GetDisplayName()).ToList();
         }
 
 
         async void OnContactAddClicked(Object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditContactPage(ref ContactSource)
+            await Navigation.PushAsync(new EditContactPage()
             {
                 BindingContext = new Contact()
             });
@@ -47,7 +43,7 @@ namespace XamarinStudy.Pages
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new EditContactPage(ref ContactSource)
+                await Navigation.PushAsync(new EditContactPage()
                 {
                     BindingContext = e.SelectedItem as Contact
                 });

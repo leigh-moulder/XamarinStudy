@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using XamarinStudy.Models;
 
 namespace XamarinStudy.DataSource
 {
+    [System.Obsolete("Replaced by the database implementation.", true)]
     public class LocalContacts : ContactsSource
     {
 
@@ -17,7 +19,7 @@ namespace XamarinStudy.DataSource
             {
                 new Contact
                 {
-                    index = 0,
+                    ID = 0,
                     ImageUrl = "https://kids.sandiegozoo.org/sites/default/files/styles/landing_page_view/public/2017-12/animal-hero-cheetah.jpg?h=77f2d4e4&itok=fFHrcejy",
                     FirstName = "L",
                     LastName = "M",
@@ -26,7 +28,7 @@ namespace XamarinStudy.DataSource
 
                 new Contact
                 {
-                    index = 1,
+                    ID = 1,
                     ImageUrl = "https://kids.sandiegozoo.org/sites/default/files/styles/landing_page_view/public/2017-12/animal-hero-dwarf-croc.jpg?h=77f2d4e4&itok=OBnmGEJQ",
                     FirstName = "Abigale",
                     LastName = "Adams",
@@ -35,7 +37,7 @@ namespace XamarinStudy.DataSource
 
                 new Contact
                 {
-                    index = 2,
+                    ID = 2,
                     ImageUrl = "https://kids.sandiegozoo.org/sites/default/files/styles/landing_page_view/public/2017-07/animal-hero-elephant.jpg?h=77f2d4e4&itok=rWNPmsj9",
                     FirstName = "Kiara",
                     LastName = "Clark",
@@ -44,7 +46,7 @@ namespace XamarinStudy.DataSource
 
                 new Contact
                 {
-                    index = 3,
+                    ID = 3,
                     ImageUrl = "",
                     FirstName = "Timon",
                     LastName = "Usman",
@@ -67,20 +69,19 @@ namespace XamarinStudy.DataSource
             // other options:
             // https://stackoverflow.com/questions/26383431/c-sharp-split-list-into-sublists-based-on-a-value-of-a-certain-property
 
-            IEnumerable<Contact> FavoritesSubList = Contacts.Where(p => p.IsFavorite);
-            return FavoritesSubList.ToList();
+            return Contacts.Where(p => p.IsFavorite).ToList<Contact>();
         }
 
 
         override public Contact AddContact(Contact NewContact)
         {
-            if (NewContact.index.HasValue)
+            if (NewContact.ID != 0)
             {
                 return EditContact(NewContact);
             }
 
             ContactIndex++;
-            NewContact.index = ContactIndex;
+            NewContact.ID = ContactIndex;
 
             Contacts.Add(NewContact);
 
@@ -91,7 +92,7 @@ namespace XamarinStudy.DataSource
         override public Contact EditContact(Contact UpdatedContact)
         {
 
-            Contact originalContact = Contacts.Where(p => p.index == UpdatedContact.index).First();
+            Contact originalContact = Contacts.Where(p => p.ID == UpdatedContact.ID).First();
 
             if (originalContact == null)
             {
@@ -111,7 +112,7 @@ namespace XamarinStudy.DataSource
 
         override public void RemoveContact(Contact RemovedContact)
         {
-            if (RemovedContact.index != null)
+            if (RemovedContact.ID != 0)
             {
                 Contacts.Remove(RemovedContact);
             }

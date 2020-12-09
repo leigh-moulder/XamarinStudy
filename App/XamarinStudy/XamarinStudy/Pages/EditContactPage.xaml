@@ -37,8 +37,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Text="Save" Clicked="OnSaveButtonClicked" />
-                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+                <Button x:Name="BtnSave" Grid.Column="0" Text="Save" Clicked="OnSaveButtonClicked" />
+                <Button x:Name="BtnDelete" Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
