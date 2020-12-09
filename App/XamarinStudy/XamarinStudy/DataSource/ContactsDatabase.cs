@@ -88,7 +88,6 @@ namespace XamarinStudy.DataSource
          */
         public Task<int> SaveContactAsync(Contact contact)
         {
-
             if (contact.ID != 0)
             {
                 return Database.UpdateAsync(contact);

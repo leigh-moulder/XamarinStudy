@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using Xamarin.Forms;
-using XamarinStudy.DataSource;
 using XamarinStudy.Models;
 
 namespace XamarinStudy.Pages
@@ -11,8 +9,7 @@ namespace XamarinStudy.Pages
     //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-
-        
+                
         public MainPage()
         {
             InitializeComponent();

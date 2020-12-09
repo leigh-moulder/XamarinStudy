@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using XamarinStudy.DataSource;
 using XamarinStudy.Models;
 
 namespace XamarinStudy.Pages
@@ -10,7 +9,6 @@ namespace XamarinStudy.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditContactPage : ContentPage
     {
-
 
         public EditContactPage()
         {
@@ -35,12 +33,10 @@ namespace XamarinStudy.Pages
 
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-
             var contact = (Contact)BindingContext;
 
             await App.Database.DeleteContactAsync(contact);
             await Navigation.PopAsync();
         }
-
     }
 }
