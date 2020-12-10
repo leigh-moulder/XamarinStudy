@@ -4,6 +4,12 @@
              x:Class="XamarinStudy.Pages.MainPage"
              Title="Contacts">
 
+    <ContentPage.Resources>
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}"/>
+        </Style>
+    </ContentPage.Resources>
+
     <NavigationPage.TitleView>
         <Label Text="Contacts" TextColor="White" FontSize="Title"/>
     </NavigationPage.TitleView>
@@ -21,9 +27,7 @@
             <ListView
                 x:Name="FavoriteContactsListView" 
                 SeparatorVisibility="Default"
-                SelectionMode="None"
-                ItemSelected="OnContactSelected"
-                ItemTapped="OnContactSelected">
+                ItemSelected="OnContactSelected">
 
                 <ListView.Header>
                     <StackLayout Orientation="Horizontal">
@@ -61,9 +65,7 @@
             <ListView
                 x:Name="ContactsListView"
                 SeparatorVisibility="Default"
-                SelectionMode="None"
-                ItemSelected="OnContactSelected"
-                ItemTapped="OnContactSelected">
+                ItemSelected="OnContactSelected">
 
                 <ListView.Header>
                     <StackLayout Orientation="Horizontal">

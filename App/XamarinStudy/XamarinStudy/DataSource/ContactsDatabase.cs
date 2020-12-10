@@ -63,7 +63,7 @@ namespace XamarinStudy.DataSource
                 return SaveContactsAsync(DefaultContacts);                
             }
 
-            return null;
+            return Task.FromResult(0);
         }
 
 
