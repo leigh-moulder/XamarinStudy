@@ -23,4 +23,5 @@ namespace XamarinStudy.Models
             return GetDisplayName();
         }
     }
+
 }

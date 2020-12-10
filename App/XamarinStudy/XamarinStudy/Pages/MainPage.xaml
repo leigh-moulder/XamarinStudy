@@ -8,6 +8,13 @@
         <Style TargetType="{x:Type ListView}">
             <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}"/>
         </Style>
+
+        <Style TargetType="Image"
+               ApplyToDerivedTypes="True"
+               CanCascade="True">
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="WidthRequest" Value="35"/>
+        </Style>
     </ContentPage.Resources>
 
     <NavigationPage.TitleView>
@@ -27,7 +34,9 @@
             <ListView
                 x:Name="FavoriteContactsListView" 
                 SeparatorVisibility="Default"
-                ItemSelected="OnContactSelected">
+                SelectionMode="None"
+                ItemSelected="OnContactSelected"
+                ItemTapped="OnContactTapped">
 
                 <ListView.Header>
                     <StackLayout Orientation="Horizontal">
@@ -47,12 +56,11 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <Image Grid.Row="0" 
                                    Grid.Column="0"
                                    Source="{Binding ImageUrl}"
-                                   Aspect="AspectFill"
-                                   HeightRequest="35"
-                                   WidthRequest="35"/>
+                                   Aspect="AspectFill"/>
                                 <Label Grid.Row="0"
                                    Grid.Column="1"
                                    Text="{Binding FirstName}"/>
@@ -65,7 +73,9 @@
             <ListView
                 x:Name="ContactsListView"
                 SeparatorVisibility="Default"
-                ItemSelected="OnContactSelected">
+                SelectionMode="None"
+                ItemSelected="OnContactSelected"
+                ItemTapped="OnContactTapped">
 
                 <ListView.Header>
                     <StackLayout Orientation="Horizontal">
@@ -85,12 +95,11 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <Image Grid.Row="0" 
                                    Grid.Column="0"
                                    Source="{Binding ImageUrl}"
-                                   Aspect="AspectFill"
-                                   HeightRequest="35"
-                                   WidthRequest="35"/>
+                                   Aspect="AspectFill"/>
                                 <Label Grid.Row="0"
                                    Grid.Column="1"
                                    Text="{Binding FirstName}"/>

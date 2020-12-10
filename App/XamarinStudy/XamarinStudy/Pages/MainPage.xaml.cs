@@ -46,5 +46,17 @@ namespace XamarinStudy.Pages
                 });
             }
         }
+
+
+        async void OnContactTapped(Object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                await Navigation.PushAsync(new EditContactPage()
+                {
+                    BindingContext = e.Item as Contact
+                });
+            }
+        }
     }
 }
