@@ -26,6 +26,14 @@
                      Order="Primary"
                      Priority="0"
                      Clicked="OnContactAddClicked"/>
+        <ToolbarItem Text="Add Contact"
+                     Order="Secondary"
+                     Priority="0"
+                     Clicked="OnContactAddClicked"/>
+        <ToolbarItem Text="Sensors"
+                     Order="Secondary"
+                     Priority="1"
+                     Clicked="OnSensorClicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -63,7 +71,7 @@
                                    Aspect="AspectFill"/>
                                 <Label Grid.Row="0"
                                    Grid.Column="1"
-                                   Text="{Binding FirstName}"/>
+                                   Text="{Binding DisplayName}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -102,7 +110,7 @@
                                    Aspect="AspectFill"/>
                                 <Label Grid.Row="0"
                                    Grid.Column="1"
-                                   Text="{Binding FirstName}"/>
+                                   Text="{Binding DisplayName}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

@@ -13,14 +13,13 @@ namespace XamarinStudy.Models
         public Boolean IsFavorite { get; set; }
         public string PhoneNumber { get; set; }
 
-        public string GetDisplayName()
-        {
-            return FirstName + " " + LastName;
-        }
+        [Ignore]
+        public string DisplayName => $"{FirstName} {LastName}";
+
 
         public override string ToString()
         {
-            return GetDisplayName();
+            return FirstName + " " + LastName;
         }
     }
 

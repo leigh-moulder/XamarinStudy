@@ -20,7 +20,7 @@
             x:Name="EditContactLayout"
             Margin="{StaticResource PageMargin}">
             
-            <Label Text="{Binding FirstName}" FontSize="Title"/>
+            <Label Text="{Binding DisplayName}" FontSize="Title"/>
 
             <Grid Padding="2, 2, 2, 2">
                 <Grid.RowDefinitions>

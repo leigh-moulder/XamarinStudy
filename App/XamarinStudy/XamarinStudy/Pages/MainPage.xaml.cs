@@ -2,11 +2,13 @@
 using System.Linq;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
 using XamarinStudy.Models;
 
 namespace XamarinStudy.Pages
 {
-    //[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
                 
@@ -22,8 +24,8 @@ namespace XamarinStudy.Pages
 
             var AllContacts = await App.Database.GetContactsAsync();
 
-            FavoriteContactsListView.ItemsSource = AllContacts.Where(p => p.IsFavorite).OrderBy(p => p.GetDisplayName()).ToList();
-            ContactsListView.ItemsSource = AllContacts.OrderBy(p => p.GetDisplayName()).ToList();
+            FavoriteContactsListView.ItemsSource = AllContacts.Where(p => p.IsFavorite).OrderBy(p => p.DisplayName).ToList();
+            ContactsListView.ItemsSource = AllContacts.OrderBy(p => p.DisplayName).ToList();
         }
 
 
@@ -57,6 +59,12 @@ namespace XamarinStudy.Pages
                     BindingContext = e.Item as Contact
                 });
             }
+        }
+
+
+        async void OnSensorClicked(Object sender,EventArgs e)
+        {
+            await Navigation.PushAsync(new SensorPage());
         }
     }
 }
