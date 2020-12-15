@@ -62,9 +62,15 @@ namespace XamarinStudy.Pages
         }
 
 
-        async void OnSensorClicked(Object sender,EventArgs e)
+        async void OnSensorClicked(Object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SensorPage());
+        }
+
+
+        async void OnWebClicked(Object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WebPage());
         }
     }
 }

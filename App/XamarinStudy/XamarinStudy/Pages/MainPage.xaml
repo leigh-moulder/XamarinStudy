@@ -26,6 +26,7 @@
                      Order="Primary"
                      Priority="0"
                      Clicked="OnContactAddClicked"/>
+        
         <ToolbarItem Text="Add Contact"
                      Order="Secondary"
                      Priority="0"
@@ -34,6 +35,10 @@
                      Order="Secondary"
                      Priority="1"
                      Clicked="OnSensorClicked"/>
+        <ToolbarItem Text="Web"
+                     Order="Secondary"
+                     Priority="2"
+                     Clicked="OnWebClicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

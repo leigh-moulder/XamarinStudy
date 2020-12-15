@@ -3,16 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinStudy.Pages.EditContactPage"
              Title="Edit Contact">
-    
+
     <ContentPage.Resources>
-        <Style TargetType="Button"
-               ApplyToDerivedTypes="True"
-               CanCascade="True">
-            <Setter Property="FontSize" Value="Medium" />
-            <Setter Property="BackgroundColor" Value="#1976D2" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="CornerRadius" Value="5" />
-        </Style>
     </ContentPage.Resources>
 
     <ContentPage.Content>

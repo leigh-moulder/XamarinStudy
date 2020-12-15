@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinStudy.Pages.WebPage"
+             Title="Web Views">
+
+    <ContentPage.Resources>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <Label Text="Web Views" TextColor="White" FontSize="Title"/>
+    </NavigationPage.TitleView>
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="2, 2, 2, 2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="URL:" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start"/>
+                <Editor Grid.Row="0" Grid.Column="1" x:Name="EditorUrl" Text="{Binding Url}"/>
+            </Grid>
+            
+            <Button Grid.Row="1" Grid.Column="0" x:Name="ButtonLoad" Text="Load" Clicked="OnLoadUrlClicked"/>
+
+            <WebView x:Name="WebView" WidthRequest="1000" HeightRequest="1000" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
